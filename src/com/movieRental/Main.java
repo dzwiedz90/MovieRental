@@ -1,27 +1,25 @@
 package com.movieRental;
 
-import com.movieRental.database.SQLiteDatabaseConnector;
-import com.movieRental.movies.Movie;
-
-import java.util.ArrayList;
-import java.util.List;
+import com.movieRental.userInterface.MainWindow;
 
 public class Main {
     public static void main(String[] arguments) {
-        SQLiteDatabaseConnector sql = new SQLiteDatabaseConnector();
-        ArrayList<Movie> list = sql.getAllMoviesData();
+        MainWindow mainWindow = new MainWindow();
 
-        for (Movie movie : list){
-            System.out.println(movie.getId());
-            System.out.println(movie.getName());
-            System.out.println(movie.getRentalPrice());
-            System.out.println(movie.getPriority());
-            System.out.println(movie.getDescription());
-            System.out.println(movie.getDirector());
-            System.out.println(movie.getGenre());
-            System.out.println(movie.getIsRented());
-            System.out.println(movie.getProductionYear());
-            System.out.println();
-        }
+//        MovieDataHandler sql = new MovieDataHandler();
+//        ArrayList<Movie> list = sql.getAllMoviesData();
+//
+//        for (Movie movie : list){
+//            System.out.println(movie.getId());
+//            System.out.println(movie.getName());
+//            System.out.println(movie.getRentalPrice());
+//            System.out.println(movie.getPriority());
+//            System.out.println(movie.getDescription());
+//            System.out.println(movie.getDirector());
+//            System.out.println(movie.getGenre());
+//            System.out.println(movie.getIsRented());
+//            System.out.println(movie.getProductionYear());
+//            System.out.println();
+//        }
     }
 }

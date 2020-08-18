@@ -1,10 +1,11 @@
 package com.movieRental.database;
 
-import com.movieRental.movies.Movie;
-
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
+
+import com.movieRental.movies.Movie;
+
 
 class ParseMovieData {
     public static ArrayList<Movie> parseMovieData(ResultSet movieDataFromDatabase) throws SQLException {
