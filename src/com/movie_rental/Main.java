@@ -1,6 +1,6 @@
-package com.movieRental;
+package com.movie_rental;
 
-import com.movieRental.userInterface.MainWindow;
+import com.movie_rental.user_interface.MainWindow;
 
 public class Main {
     public static void main(String[] arguments) {

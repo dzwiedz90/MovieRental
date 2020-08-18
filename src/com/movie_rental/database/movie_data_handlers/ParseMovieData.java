@@ -1,15 +1,23 @@
-package com.movieRental.database;
+package com.movie_rental.database.movie_data_handlers;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
-import com.movieRental.movies.Movie;
+import com.movie_rental.movies.Movie;
 
 
 class ParseMovieData {
+
+    /**
+     * Static method that takes ResultSet as an argument which contains movie data from database and returns ArrayList filled with Movie objects created from data from ResultSet
+     * @param movieDataFromDatabase ResultSet with movie data selected from database
+     */
     public static ArrayList<Movie> parseMovieData(ResultSet movieDataFromDatabase) throws SQLException {
+        // Empty array for Movie objects created from ResultSet with movie data
         ArrayList<Movie> movieList = new ArrayList<Movie>();
+
+        // Iterate trough ResultSet with movie data, create Movie objects and add them to movieList ArrayList
         while (movieDataFromDatabase.next()) {
             Movie movie = new Movie();
             movie.setId(String.valueOf(movieDataFromDatabase.getInt("movie_id")));

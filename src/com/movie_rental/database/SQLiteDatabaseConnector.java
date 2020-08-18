@@ -1,10 +1,13 @@
-package com.movieRental.database;
+package com.movie_rental.database;
 
 import java.sql.*;
 
 
-class SQLiteDatabaseConnector {
-    Connection connect() throws ClassNotFoundException {
+public class SQLiteDatabaseConnector {
+    /**
+     * Method that creates and return a connection to the datatbase
+     */
+    public static Connection connectSQLiteDatabase() throws ClassNotFoundException {
         String url = "jdbc:sqlite:C:\\Users\\upaci\\JavaProjects\\MovieRental\\movies.db";
         Class.forName("org.sqlite.JDBC");
         Connection conn = null;
