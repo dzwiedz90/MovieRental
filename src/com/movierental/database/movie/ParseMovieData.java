@@ -1,10 +1,10 @@
-package com.movie_rental.database.movie_data_handlers;
+package com.movierental.database.movie;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
-import com.movie_rental.movies.Movie;
+import com.movierental.movies.Movie;
 
 
 class ParseMovieData {
@@ -15,9 +15,9 @@ class ParseMovieData {
      */
     public static ArrayList<Movie> parseMovieData(ResultSet movieDataFromDatabase) throws SQLException {
         // Empty array for Movie objects created from ResultSet with movie data
-        ArrayList<Movie> movieList = new ArrayList<Movie>();
+        ArrayList<Movie> movieListArray = new ArrayList<Movie>();
 
-        // Iterate trough ResultSet with movie data, create Movie objects and add them to movieList ArrayList
+        // Iterates trough ResultSet with movie data, create Movie objects and add them to movieList ArrayList
         while (movieDataFromDatabase.next()) {
             Movie movie = new Movie();
             movie.setId(String.valueOf(movieDataFromDatabase.getInt("movie_id")));
@@ -29,9 +29,9 @@ class ParseMovieData {
             movie.setGenre(movieDataFromDatabase.getString("genre"));
             movie.setIsRented(String.valueOf(movieDataFromDatabase.getInt("is_rented")));
             movie.setProductionYear(String.valueOf(movieDataFromDatabase.getInt("movie_production_year")));
-            movieList.add(movie);
+            movieListArray.add(movie);
         }
 
-        return movieList;
+        return movieListArray;
     }
 }

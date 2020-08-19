@@ -1,4 +1,4 @@
-package com.movie_rental.database;
+package com.movierental.database;
 
 import java.sql.*;
 

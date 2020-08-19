@@ -1,4 +1,4 @@
-package com.movie_rental.movies;
+package com.movierental.movies;
 
 public class Movie {
     private String id;

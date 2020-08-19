@@ -1,4 +1,4 @@
-package com.movie_rental.user_interface;
+package com.movierental.ui;
 
 import javax.swing.*;
 import java.awt.*;
@@ -15,5 +15,10 @@ public class UIWindowHandler {
 
     public static void refreshWindow() {
 
+    }
+
+    public static void destroyWindow(JPanel panelToDestroyPanelIn, JFrame mainWindowIn) {
+        panelToDestroyPanelIn.remove(panelToDestroyPanelIn);
+        MainWindow.repaintMainWindow(mainWindowIn);
     }
 }
