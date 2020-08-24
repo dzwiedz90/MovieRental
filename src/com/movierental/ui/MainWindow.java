@@ -21,15 +21,10 @@ public class MainWindow {
         // Creates pane with login and password fields and logIn button used for logging in
         JPanel loginPane = new JPanel();
         LoginWindow loginWindow = new LoginWindow(loginPane, mainWindow);
-        (new Thread(loginWindow)).start();
         mainWindow.add(loginPane);
 
 
         mainWindow.setVisible(true);
         UIWindowHandler.centerWindowOnScreen(this.mainWindow);
-    }
-
-    public static void repaintMainWindow(JFrame mainWindowIn) {
-        mainWindowIn.repaint();
     }
 }

@@ -1,7 +1,5 @@
 package com.movierental.ui.login;
 
-import com.movierental.ui.UIWindowHandler;
-
 import javax.swing.*;
 import javax.swing.border.EmptyBorder;
 import java.awt.event.ActionEvent;
@@ -9,12 +7,14 @@ import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 
-public class LoginWindow implements ActionListener, KeyListener, Runnable {
+import com.movierental.ui.UIWindowHandler;
+import com.movierental.ui.interfaces.MainInterface;
+
+public class LoginWindow implements ActionListener, KeyListener {
     // Creates fields to enter credentials
     private JTextField loginTextField;
     private JPasswordField passwordField;
     private JButton logInButton;
-    private boolean isUserDataCorrect;
     private JPanel pane;
     private JFrame mainFrame;
 
@@ -64,8 +64,15 @@ public class LoginWindow implements ActionListener, KeyListener, Runnable {
         Object source = e.getSource();
         if (source == logInButton) {
             String[] dataFromUserAndPasswordFields = this.getDataFromUserAndPasswordFields();
-            isUserDataCorrect = CheckUserCredentials.handleUserData(dataFromUserAndPasswordFields);
-            System.out.println(isUserDataCorrect);
+            if (CheckUserCredentials.handleUserData(dataFromUserAndPasswordFields)) {
+                UIWindowHandler.destroyWindow(pane, mainFrame);
+                MainInterface mainInterface = new MainInterface(mainFrame);
+            } else {
+                JOptionPane.showMessageDialog(mainFrame,
+                        "Username or password is not correct",
+                        "Invalid credentials",
+                        JOptionPane.ERROR_MESSAGE);
+            }
         }
     }
 
@@ -79,8 +86,15 @@ public class LoginWindow implements ActionListener, KeyListener, Runnable {
         Object source = e.getKeyCode();
         if (source.equals(10)) {
             String[] dataFromUserAndPasswordFields = this.getDataFromUserAndPasswordFields();
-            isUserDataCorrect = CheckUserCredentials.handleUserData(dataFromUserAndPasswordFields);
-            System.out.println(isUserDataCorrect);
+            if (CheckUserCredentials.handleUserData(dataFromUserAndPasswordFields)) {
+                UIWindowHandler.destroyWindow(pane, mainFrame);
+                MainInterface mainInterface = new MainInterface(mainFrame);
+            } else {
+                JOptionPane.showMessageDialog(mainFrame,
+                        "Username or password is not correct",
+                        "Invalid credentials",
+                        JOptionPane.ERROR_MESSAGE);
+            }
         }
     }
 
@@ -99,12 +113,5 @@ public class LoginWindow implements ActionListener, KeyListener, Runnable {
         dataFromUserAndPasswordFields[0] = loginTextField.getText();
         dataFromUserAndPasswordFields[1] = String.valueOf(passwordField.getPassword());
         return dataFromUserAndPasswordFields;
-    }
-
-    @Override
-    public void run() {
-        while (true) {
-            if(isUserDataCorrect) UIWindowHandler.destroyWindow(pane, mainFrame);
-        }
     }
 }

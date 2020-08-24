@@ -17,8 +17,23 @@ public class UIWindowHandler {
 
     }
 
-    public static void destroyWindow(JPanel panelToDestroyPanelIn, JFrame mainWindowIn) {
-        panelToDestroyPanelIn.remove(panelToDestroyPanelIn);
-        MainWindow.repaintMainWindow(mainWindowIn);
+    public static void destroyWindow(JPanel childComponentToDestroyIn, JFrame parentComponentIn) {
+        parentComponentIn.remove(childComponentToDestroyIn);
+        repaintWindow(parentComponentIn);
+    }
+
+    public static void destroyWindow(JPanel childComponentToDestroyIn, JPanel parentComponentIn) {
+        parentComponentIn.remove(childComponentToDestroyIn);
+        repaintWindow(parentComponentIn);
+    }
+
+    public static void repaintWindow(JFrame componentIn) {
+        componentIn.validate();
+        componentIn.repaint();
+    }
+
+    public static void repaintWindow(JPanel componentIn) {
+        componentIn.validate();
+        componentIn.repaint();
     }
 }
