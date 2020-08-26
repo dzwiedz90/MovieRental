@@ -1,6 +1,7 @@
 package com.movierental.ui;
 
 import javax.swing.*;
+import javax.swing.border.Border;
 import java.awt.*;
 
 public class UIWindowHandler {
@@ -35,5 +36,10 @@ public class UIWindowHandler {
     public static void repaintWindow(JPanel componentIn) {
         componentIn.validate();
         componentIn.repaint();
+    }
+
+    public static void setBorder(JPanel panelIn) {
+        Border blackline = BorderFactory.createLineBorder(Color.black);
+        panelIn.setBorder(blackline);
     }
 }
