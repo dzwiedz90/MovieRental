@@ -4,8 +4,11 @@ import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.ArrayList;
 
 import com.movierental.database.SQLiteDatabaseConnector;
+import com.movierental.movies.Movie;
+import com.movierental.users.User;
 
 
 public class UserDataHandler {
@@ -53,5 +56,31 @@ public class UserDataHandler {
     private static void insertDataIntoUserDataFromDatabaseArrayParser() throws SQLException {
         userDataFromDatabaseArray[0] = selectedUserDataFromDatabaseResultSet.getString("user_name");
         userDataFromDatabaseArray[1] = selectedUserDataFromDatabaseResultSet.getString("user_password");
+    }
+
+    public static User getUserData(String userIdIn) throws SQLException {
+        User user = null;
+        String[] userDataResult = new String[6];
+        String sqlQuery = "select * from customers join cities on customers_city = cities_id where customers_id='" + userIdIn + "';";
+
+        Connection conn = null;
+        try {
+            // Creates connection to the database
+            conn = SQLiteDatabaseConnector.connectSQLiteDatabase();
+            // Creates statement from String sql
+            Statement query = conn.createStatement();
+            //Creates ResultSet with data selected from database using String sql as a query
+            ResultSet userData = query.executeQuery(sqlQuery);
+            // Creates User object
+            user = ParseUserData.parseUserData(userData);
+        } catch (ClassNotFoundException | SQLException e) {
+            System.out.println("error");
+            e.printStackTrace();
+        } finally {
+            assert conn != null;
+            conn.close();
+        }
+
+        return user;
     }
 }

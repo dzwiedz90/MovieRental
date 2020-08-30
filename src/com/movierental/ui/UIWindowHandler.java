@@ -38,6 +38,11 @@ public class UIWindowHandler {
         componentIn.repaint();
     }
 
+    public static void repaintWindow(JTabbedPane componentIn) {
+        componentIn.validate();
+        componentIn.repaint();
+    }
+
     public static void setBorder(JPanel panelIn) {
         Border blackline = BorderFactory.createLineBorder(Color.black);
         panelIn.setBorder(blackline);

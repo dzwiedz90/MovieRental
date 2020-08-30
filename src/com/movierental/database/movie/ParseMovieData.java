@@ -27,7 +27,6 @@ class ParseMovieData {
             movie.setDescription(movieDataFromDatabase.getString("movie_description"));
             movie.setDirector(movieDataFromDatabase.getString("movie_director"));
             movie.setGenre(movieDataFromDatabase.getString("genre"));
-            movie.setIsRented(String.valueOf(movieDataFromDatabase.getInt("is_rented")));
             movie.setProductionYear(String.valueOf(movieDataFromDatabase.getInt("movie_production_year")));
             movieListArray.add(movie);
         }

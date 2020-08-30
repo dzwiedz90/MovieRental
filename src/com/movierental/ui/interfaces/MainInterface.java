@@ -3,8 +3,9 @@ package com.movierental.ui.interfaces;
 import javax.swing.*;
 
 import com.movierental.ui.UIWindowHandler;
+import com.movierental.ui.interfaces.tabbedinterfaces.CustomersEditingInterface;
 import com.movierental.ui.interfaces.tabbedinterfaces.MovieDatabaseInterface;
-import com.movierental.ui.interfaces.tabbedinterfaces.RentingMoviesCartInterface;
+import com.movierental.ui.interfaces.tabbedinterfaces.renting.RentingMoviesCartInterface;
 import com.movierental.ui.interfaces.tabbedinterfaces.RentingMoviesInterface;
 import com.movierental.ui.interfaces.tabbedinterfaces.UsersEditingInterface;
 
@@ -20,6 +21,7 @@ public class MainInterface {
         MovieDatabaseInterface movieDatabaseInterfaceTab = new MovieDatabaseInterface(tabbedPane);
         RentingMoviesInterface rentingMoviesInterfaceTab = new RentingMoviesInterface(tabbedPane);
         UsersEditingInterface usersEditingInterfaceTab = new UsersEditingInterface(tabbedPane);
+        CustomersEditingInterface customersEditingInterfaceTab = new CustomersEditingInterface(tabbedPane);
 
         mainFrameIn.add(tabbedPane);
         UIWindowHandler.repaintWindow(mainFrameIn);

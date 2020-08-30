@@ -32,10 +32,6 @@ public class Movie {
         this.description = descriptionIn;
     }
 
-    public void setIsRented(String isRentedIn) {
-        this.isRented = isRentedIn;
-    }
-
     public void setProductionYear(String productionYearIn) {
         this.productionYear = productionYearIn;
     }
@@ -67,10 +63,6 @@ public class Movie {
 
     public String getDescription() {
         return this.description;
-    }
-
-    public String getIsRented() {
-        return this.isRented;
     }
 
     public String getProductionYear() {
