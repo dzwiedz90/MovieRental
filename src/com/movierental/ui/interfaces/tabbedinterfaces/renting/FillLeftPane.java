@@ -1,5 +1,7 @@
 package com.movierental.ui.interfaces.tabbedinterfaces.renting;
 
+import com.movierental.ui.UIWindowHandler;
+
 import javax.swing.*;
 import javax.swing.border.EmptyBorder;
 import java.awt.*;
@@ -17,7 +19,7 @@ public class FillLeftPane implements ActionListener {
         this.rightPane = rightPaneIn;
         // Create main left pane
         JPanel leftPanel = new JPanel();
-        leftPanel.setBorder(new EmptyBorder(230, 0, 0, 350));
+        leftPanel.setBorder(new EmptyBorder(200, 350, 0, 0));
         leftPanel.setBackground(Color.CYAN);
         leftPanel.setLayout(new FlowLayout());
         leftPanel.setBackground(Color.CYAN);
@@ -29,6 +31,7 @@ public class FillLeftPane implements ActionListener {
         getUserIdTextField = new JTextField(10);
         getUserIdLabel.setLabelFor(getUserIdTextField);
         addUserButton = new JButton("Wybierz");
+        addUserButton.addActionListener(this);
 
         topPanel.add(getUserIdLabel);
         topPanel.add(getUserIdTextField);
@@ -55,9 +58,8 @@ public class FillLeftPane implements ActionListener {
     public void actionPerformed(ActionEvent e) {
         Object source = e.getSource();
         if (source == addUserButton) {
-            rentingInterface.setGetUserIdTextFieldValue(getUserIdTextField.getText());
             addUserButton.setEnabled(false);
-            rightPane.getUserData();
+            rightPane.getUserData(getUserIdTextField.getText());
         }
     }
 

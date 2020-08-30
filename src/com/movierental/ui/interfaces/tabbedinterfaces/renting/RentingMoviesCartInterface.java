@@ -7,7 +7,6 @@ import java.awt.*;
 
 public class RentingMoviesCartInterface {
     Insets insets;
-    String getUserIdTextFieldValue;
 
     public RentingMoviesCartInterface(JTabbedPane tabbedPaneIn) {
 //        Create parent JPanel and set a layout for it
@@ -17,13 +16,9 @@ public class RentingMoviesCartInterface {
 //        Create left and right JPanels and fill them with data
         FillLeftPane fillLeftPanel;
         FillRightPane fillRightPanel = null;
+        fillRightPanel = new FillRightPane(rentingMoviesCartPane);
         fillLeftPanel = new FillLeftPane(rentingMoviesCartPane, this, fillRightPanel);
-        fillRightPanel = new FillRightPane(rentingMoviesCartPane, getUserIdTextFieldValue, fillLeftPanel);
 
         tabbedPaneIn.add(rentingMoviesCartPane, "Dodawanie do koszyka");
-    }
-
-    protected void setGetUserIdTextFieldValue(String idIn) {
-        getUserIdTextFieldValue = idIn;
     }
 }

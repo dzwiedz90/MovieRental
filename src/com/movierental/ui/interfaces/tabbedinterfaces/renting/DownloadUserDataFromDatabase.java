@@ -5,6 +5,8 @@ import com.movierental.database.user.UserDataHandler;
 import com.movierental.users.User;
 
 import javax.swing.*;
+import javax.swing.border.EmptyBorder;
+import java.awt.*;
 import java.sql.SQLException;
 
 public class DownloadUserDataFromDatabase {
@@ -46,8 +48,13 @@ public class DownloadUserDataFromDatabase {
         addressPane.add(addressLabel);
         addressPane.add(cityLabel);
 
+        JPanel buttonPanel = new JPanel();
+        JButton removeUserButton = new JButton("Usuń klienta");
+        buttonPanel.add(removeUserButton);
+
         paneIn.add(nameSurnamePane);
         paneIn.add(phonePane);
         paneIn.add(addressPane);
+        paneIn.add(buttonPanel);
     }
 }
