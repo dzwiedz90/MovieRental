@@ -39,7 +39,7 @@ public class FillLeftPane implements ActionListener {
 
         // Create bottom left pane that will allow movies to be handled
         JPanel bottomPanel = new JPanel();
-        JLabel getMovieIdLabel = new JLabel("ID użytkownika");
+        JLabel getMovieIdLabel = new JLabel("ID filmu");
         JTextField getMovieIdTextField = new JTextField(10);
         getMovieIdLabel.setLabelFor(getMovieIdTextField);
         JButton addMovieButton = new JButton("Dodaj");

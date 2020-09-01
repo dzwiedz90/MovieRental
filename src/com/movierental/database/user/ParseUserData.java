@@ -9,7 +9,7 @@ import java.util.ArrayList;
 
 public class ParseUserData {
 
-    public static User parseUserData(ResultSet userDataFromDatabase) throws SQLException {
+    protected static User parseUserData(ResultSet userDataFromDatabase) throws SQLException {
         // Empty array for Movie objects created from ResultSet with movie data
         User user = new User();
 

@@ -7,8 +7,10 @@ import java.awt.*;
 
 public class FillRightPane {
     JPanel bottomPanel;
+    RentingMoviesCartInterface rentingMoviesCartInterface;
 
-    public FillRightPane(JPanel paneIn) {
+    public FillRightPane(JPanel paneIn, RentingMoviesCartInterface rentingMoviesCartInterfaceIn) {
+        this.rentingMoviesCartInterface = rentingMoviesCartInterfaceIn;
         JPanel mainRightPane = new JPanel();
         UIWindowHandler.setBorder(mainRightPane);
         mainRightPane.setLayout(new BoxLayout(mainRightPane, BoxLayout.PAGE_AXIS));
@@ -49,10 +51,9 @@ public class FillRightPane {
         paneIn.add(bottomPanel);
     }
 
-    public void getUserData(String userId){
-        DownloadUserDataFromDatabase fillPanelWithUserData = new DownloadUserDataFromDatabase(bottomPanel, userId);
+    public void getUserData(String userId) {
+        DownloadUserDataFromDatabase fillPanelWithUserData = new DownloadUserDataFromDatabase(bottomPanel, userId, rentingMoviesCartInterface);
         UIWindowHandler.repaintWindow(bottomPanel);
         bottomPanel.getTopLevelAncestor().validate();
     }
-
 }

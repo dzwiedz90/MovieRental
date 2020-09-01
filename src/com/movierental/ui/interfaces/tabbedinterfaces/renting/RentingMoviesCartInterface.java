@@ -1,12 +1,12 @@
 package com.movierental.ui.interfaces.tabbedinterfaces.renting;
 
 import javax.swing.*;
-import javax.swing.border.EmptyBorder;
 import java.awt.*;
 
 
 public class RentingMoviesCartInterface {
-    Insets insets;
+    FillLeftPane fillLeftPanel;
+    FillRightPane fillRightPanel;
 
     public RentingMoviesCartInterface(JTabbedPane tabbedPaneIn) {
 //        Create parent JPanel and set a layout for it
@@ -14,11 +14,13 @@ public class RentingMoviesCartInterface {
         rentingMoviesCartPane.setLayout(new FlowLayout());
 
 //        Create left and right JPanels and fill them with data
-        FillLeftPane fillLeftPanel;
-        FillRightPane fillRightPanel = null;
-        fillRightPanel = new FillRightPane(rentingMoviesCartPane);
+        FillRightPane fillRightPanel = new FillRightPane(rentingMoviesCartPane, this);
         fillLeftPanel = new FillLeftPane(rentingMoviesCartPane, this, fillRightPanel);
 
         tabbedPaneIn.add(rentingMoviesCartPane, "Dodawanie do koszyka");
+    }
+
+    public void enableAddUserButtonFromFillLeftPaneClass() {
+        fillLeftPanel.enableCustomerButton();
     }
 }
