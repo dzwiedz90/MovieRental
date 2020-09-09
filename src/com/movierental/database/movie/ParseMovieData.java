@@ -49,4 +49,21 @@ class ParseMovieData {
 
         return movieListArray;
     }
+
+    protected static Movie parseOneMovieData(ResultSet movieDataFromDatabase) throws SQLException {
+        // Iterates trough ResultSet with movie data, create Movie objects and add them to movieList ArrayList
+        Movie movie = new Movie();
+        while (movieDataFromDatabase.next()) {
+            movie.setId(String.valueOf(movieDataFromDatabase.getInt("movie_id")));
+            movie.setName(movieDataFromDatabase.getString("movie_name"));
+            movie.setRentalPrice(String.valueOf(movieDataFromDatabase.getDouble("movie_rental_price")));
+            movie.setPriority(String.valueOf(movieDataFromDatabase.getInt("movie_priority")));
+            movie.setDescription(movieDataFromDatabase.getString("movie_description"));
+            movie.setDirector(movieDataFromDatabase.getString("movie_director"));
+            movie.setGenre(movieDataFromDatabase.getString("genre"));
+            movie.setProductionYear(String.valueOf(movieDataFromDatabase.getInt("movie_production_year")));
+        }
+
+        return movie;
+    }
 }

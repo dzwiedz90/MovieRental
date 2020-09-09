@@ -10,7 +10,9 @@ import java.awt.event.ActionListener;
 
 public class FillLeftPane implements ActionListener {
     JButton addUserButton;
+    JButton addMovieButton;
     JTextField getUserIdTextField;
+    JTextField getMovieIdTextField;
     RentingMoviesCartInterface rentingInterface;
     FillRightPane rightPane;
 
@@ -40,9 +42,10 @@ public class FillLeftPane implements ActionListener {
         // Create bottom left pane that will allow movies to be handled
         JPanel bottomPanel = new JPanel();
         JLabel getMovieIdLabel = new JLabel("ID filmu");
-        JTextField getMovieIdTextField = new JTextField(10);
+        getMovieIdTextField = new JTextField(10);
         getMovieIdLabel.setLabelFor(getMovieIdTextField);
-        JButton addMovieButton = new JButton("Dodaj");
+        addMovieButton = new JButton("Dodaj");
+        addMovieButton.addActionListener(this);
 
         bottomPanel.add(getMovieIdLabel);
         bottomPanel.add(getMovieIdTextField);
@@ -60,6 +63,9 @@ public class FillLeftPane implements ActionListener {
         if (source == addUserButton) {
             addUserButton.setEnabled(false);
             rightPane.getUserData(getUserIdTextField.getText());
+        }
+        if (source == addMovieButton) {
+            rightPane.addMovieToBottomPane(getMovieIdTextField.getText());
         }
     }
 

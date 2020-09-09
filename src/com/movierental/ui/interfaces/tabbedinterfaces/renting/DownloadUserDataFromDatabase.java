@@ -109,9 +109,13 @@ public class DownloadUserDataFromDatabase implements ActionListener {
     @Override
     public void actionPerformed(ActionEvent e) {
         Object source = e.getSource();
-        if(source == removeUserButton){
+        if (source == removeUserButton) {
             parentPane.removeAll();
             rentingMoviesCartInterface.enableAddUserButtonFromFillLeftPaneClass();
         }
+    }
+
+    public User getUser() {
+        return userData;
     }
 }

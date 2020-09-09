@@ -1,13 +1,21 @@
 package com.movierental.ui.interfaces.tabbedinterfaces.renting;
 
-import com.movierental.ui.UIWindowHandler;
-
 import javax.swing.*;
 import java.awt.*;
+import java.sql.SQLException;
+
+import com.movierental.database.movie.MovieDataHandler;
+import com.movierental.database.user.UserDataHandler;
+import com.movierental.movies.Movie;
+import com.movierental.ui.UIWindowHandler;
+import com.movierental.users.User;
+
 
 public class FillRightPane {
     JPanel bottomPanel;
+    JPanel bottomBottomPanel;
     RentingMoviesCartInterface rentingMoviesCartInterface;
+    User user;
 
     public FillRightPane(JPanel paneIn, RentingMoviesCartInterface rentingMoviesCartInterfaceIn) {
         this.rentingMoviesCartInterface = rentingMoviesCartInterfaceIn;
@@ -42,18 +50,45 @@ public class FillRightPane {
     }
 
     private void fillRightBottomPane(JPanel paneIn) {
-        JPanel bottomPanel = new JPanel();
+        bottomBottomPanel = new JPanel();
+        JScrollPane bottomScrollPane = new JScrollPane(bottomBottomPanel, ScrollPaneConstants.VERTICAL_SCROLLBAR_AS_NEEDED, ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
+        bottomBottomPanel.setLayout(new BoxLayout(bottomBottomPanel, BoxLayout.PAGE_AXIS));
+        bottomBottomPanel.setBackground(Color.GREEN);
         bottomPanel.setBackground(Color.RED);
 
-        JLabel label2 = new JLabel("bottom panel");
+        JLabel label2 = new JLabel("Filmy w koszyku");
 
-        bottomPanel.add(label2);
-        paneIn.add(bottomPanel);
+        bottomBottomPanel.add(label2);
+
+        paneIn.add(bottomScrollPane);
     }
 
-    public void getUserData(String userId) {
-        DownloadUserDataFromDatabase fillPanelWithUserData = new DownloadUserDataFromDatabase(bottomPanel, userId, rentingMoviesCartInterface);
+    public void addMovieToBottomPane(String movieIdIn) {
+        Movie movieData = null;
+        try {
+            movieData = MovieDataHandler.getOneMovieData(movieIdIn);
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        JPanel moviePanel = new JPanel();
+        moviePanel.setLayout(new BoxLayout(moviePanel, BoxLayout.PAGE_AXIS));
+        assert movieData != null;
+        JLabel movieIdLabel = new JLabel(movieData.getId());
+        JLabel movieNameLabel = new JLabel(movieData.getName());
+        JButton removeMovieButton = new JButton("Usuń");
+
+        moviePanel.add(movieIdLabel);
+        moviePanel.add(movieNameLabel);
+        moviePanel.add(removeMovieButton);
+        bottomBottomPanel.add(moviePanel);
+        bottomBottomPanel.getTopLevelAncestor().validate();
+        bottomBottomPanel.getTopLevelAncestor().repaint();
+    }
+
+    public void getUserData(String userIdIn) {
+        DownloadUserDataFromDatabase fillPanelWithUserData = new DownloadUserDataFromDatabase(bottomPanel, userIdIn, rentingMoviesCartInterface);
         UIWindowHandler.repaintWindow(bottomPanel);
         bottomPanel.getTopLevelAncestor().validate();
+        user = fillPanelWithUserData.getUser();
     }
 }

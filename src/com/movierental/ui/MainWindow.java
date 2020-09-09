@@ -16,7 +16,7 @@ public class MainWindow {
         super();
         mainWindow = new JFrame("MovieRental");
         mainWindow.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
-        mainWindow.setSize(1000, 600);
+        mainWindow.setSize(1050, 600);
 
         // Creates pane with login and password fields and logIn button used for logging in
         JPanel loginPane = new JPanel();

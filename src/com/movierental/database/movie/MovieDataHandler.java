@@ -67,4 +67,57 @@ public class MovieDataHandler {
 
         return movieDataResults;
     }
+
+    public static Movie getOneMovieData(String movieIdIn) throws SQLException {
+        Movie movie = null;
+        // Creates a query
+        String sqlQuery = "select m.movie_id, m.movie_name, m.movie_rental_price, m.movie_priority, m.movie_description, m.movie_director, g.genre,  m.movie_production_year from movies as m join genres as g on m.genre_id=g.genre_id where movie_id=" + movieIdIn + ";";
+
+        Connection conn = null;
+        try {
+            // Creates connection to the database
+            conn = SQLiteDatabaseConnector.connectSQLiteDatabase();
+            // Creates statement from String sql
+            Statement query = conn.createStatement();
+            //Creates ResultSet with data selected from database using String sql as a query
+            ResultSet movieDataFromDatabaseResultSet = query.executeQuery(sqlQuery);
+            // Gets ArrayList of Movie objects from parser
+            movie = ParseMovieData.parseOneMovieData(movieDataFromDatabaseResultSet);
+
+        } catch (SQLException | ClassNotFoundException e) {
+            System.out.println("error");
+            System.out.println(e.getMessage());
+        } finally {
+            assert conn != null;
+            conn.close();
+        }
+        return movie;
+    }
+
+    public boolean checkIfMovieIsRented(String movieIdIn) {
+//        select * from rentals where rental_movie=1 and rental_is_rented=1;
+//        Movie movie = null;
+//        // Creates a query
+//        String sqlQuery = "select m.movie_id, m.movie_name, m.movie_rental_price, m.movie_priority, m.movie_description, m.movie_director, g.genre, m.is_rented, m.movie_production_year from movies as m join genres as g on m.genre_id = g.genre_id where m.movie_id=" + movieIdIn + ";";
+//
+//        Connection conn = null;
+//        try {
+//            // Creates connection to the database
+//            conn = SQLiteDatabaseConnector.connectSQLiteDatabase();
+//            // Creates statement from String sql
+//            Statement query = conn.createStatement();
+//            //Creates ResultSet with data selected from database using String sql as a query
+//            ResultSet movieDataFromDatabaseResultSet = query.executeQuery(sqlQuery);
+//            // Gets ArrayList of Movie objects from parser
+//            movie = ParseMovieData.parseOneMovieData(movieDataFromDatabaseResultSet);
+//
+//        } catch (SQLException | ClassNotFoundException e) {
+//            System.out.println("error");
+//            System.out.println(e.getMessage());
+//        } finally {
+//            assert conn != null;
+//            conn.close();
+//        }
+        return true;
+    }
 }
