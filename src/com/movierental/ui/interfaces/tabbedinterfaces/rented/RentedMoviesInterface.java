@@ -1,10 +1,10 @@
-package com.movierental.ui.interfaces.tabbedinterfaces;
+package com.movierental.ui.interfaces.tabbedinterfaces.rented;
 
 import javax.swing.*;
 
-public class RentingMoviesInterface {
+public class RentedMoviesInterface {
 
-    public RentingMoviesInterface(JTabbedPane tabbedPaneIn){
+    public RentedMoviesInterface(JTabbedPane tabbedPaneIn){
         addRentingMoviesTab(tabbedPaneIn);
     }
 

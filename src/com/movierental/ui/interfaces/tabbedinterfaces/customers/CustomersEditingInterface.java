@@ -1,4 +1,4 @@
-package com.movierental.ui.interfaces.tabbedinterfaces;
+package com.movierental.ui.interfaces.tabbedinterfaces.customers;
 
 import javax.swing.*;
 

@@ -3,11 +3,11 @@ package com.movierental.ui.interfaces;
 import javax.swing.*;
 
 import com.movierental.ui.UIWindowHandler;
-import com.movierental.ui.interfaces.tabbedinterfaces.CustomersEditingInterface;
-import com.movierental.ui.interfaces.tabbedinterfaces.MovieDatabaseInterface;
+import com.movierental.ui.interfaces.tabbedinterfaces.customers.CustomersEditingInterface;
+import com.movierental.ui.interfaces.tabbedinterfaces.movies.MovieDatabaseInterface;
 import com.movierental.ui.interfaces.tabbedinterfaces.renting.RentingMoviesCartInterface;
-import com.movierental.ui.interfaces.tabbedinterfaces.RentingMoviesInterface;
-import com.movierental.ui.interfaces.tabbedinterfaces.UsersEditingInterface;
+import com.movierental.ui.interfaces.tabbedinterfaces.rented.RentedMoviesInterface;
+import com.movierental.ui.interfaces.tabbedinterfaces.users.UsersEditingInterface;
 
 
 public class MainInterface {
@@ -19,7 +19,7 @@ public class MainInterface {
 
         RentingMoviesCartInterface cartInterfaceTab = new RentingMoviesCartInterface(tabbedPane);
         MovieDatabaseInterface movieDatabaseInterfaceTab = new MovieDatabaseInterface(tabbedPane);
-        RentingMoviesInterface rentingMoviesInterfaceTab = new RentingMoviesInterface(tabbedPane);
+        RentedMoviesInterface rentedMoviesInterfaceTab = new RentedMoviesInterface(tabbedPane);
         UsersEditingInterface usersEditingInterfaceTab = new UsersEditingInterface(tabbedPane);
         CustomersEditingInterface customersEditingInterfaceTab = new CustomersEditingInterface(tabbedPane);
 
